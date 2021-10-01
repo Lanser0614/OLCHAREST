@@ -1,0 +1,213 @@
+<?php
+
+namespace App\Modules\Computers\Controllers;
+
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Request;
+use App\Http\Controllers\BaseApiController;
+use App\Modules\Computers\DTO\CreateComputer;
+use App\Modules\Computers\DTO\UpdateComputer;
+use App\Modules\Computers\Requests\ComputerRequest;
+use App\Modules\Computers\Resources\ComputerResource;
+use App\Modules\Computers\Resources\ComputerResourceAll;
+use App\Modules\Computers\Repository\ComputerReedRepositoryInterface;
+use App\Modules\Computers\Repository\ComputerWriteRepositoryInterface;
+
+
+class ComputerController extends BaseApiController
+{
+    public  $computerReedRepository;
+    public  $computerWriteRepository;
+
+    public function __construct(ComputerReedRepositoryInterface $computerReedRepository,
+    ComputerWriteRepositoryInterface $computerWriteRepository)
+    {
+        $this->computerReedRepository = $computerReedRepository;
+        $this->computerWriteRepository = $computerWriteRepository;
+    }
+
+
+    /**
+     * @OA\Get(path="/api/v1/computers",
+     *   tags={"computers"},
+     *   security={
+     *     {"bearerAuth": {}}
+     *   },
+     *   summary="Get a list of computers",
+     *   description="",
+     *   operationId="index",
+     *   @OA\Response(
+     *     response=200,
+     *     description="success",
+     *     @OA\Schema(type="string"),
+     *   ),
+     * )
+     */
+
+
+    public function index(): \Illuminate\Http\JsonResponse
+    {
+
+
+       return $this->responseWithData(ComputerResourceAll::collection($this->computerReedRepository->getComputers()));
+
+    }
+    /**
+     * @OA\Get(path="/api/v1/computers/{id}",
+     *   tags={"computers"},
+     *   security={
+     *     {"bearerAuth": {}}
+     *   },
+     *   summary="Get one computers with all atributes",
+     *   description="",
+     *   operationId="show",
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="Computer id",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="string",
+     *         ),
+     *     ),
+     *   @OA\Response(
+     *     response=200,
+     *     description="successful operation",
+     *   ),
+     * )
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+
+    public function show($id): \Illuminate\Http\JsonResponse
+    {
+        $model = $this->computerReedRepository->getComputersById($id);
+        if (empty($model)) {
+            return $this->responseWithMessage(Response::HTTP_NOT_FOUND);
+        }
+      return $this->responseWithData(new ComputerResource($model));
+    }
+
+
+/**
+     * @OA\Post(
+     *   path="/api/v1/computers",
+     *   tags={"computers"},
+     *   security={
+     *     {"bearerAuth": {}}
+     *   },
+     *   summary="Create new computers",
+     *   description="",
+     *   operationId="store",
+     *   @OA\RequestBody(
+     *       required=true,
+     *       @OA\MediaType(
+     *           mediaType="application/json",
+     *           @OA\Schema(
+     *               type="object",
+     *               @OA\Property(
+     *                   property="name",
+     *                   description="name book",
+     *                   type="string"
+     *               ),
+     *               @OA\Property(
+     *                   property="desc",
+     *                   description="about book",
+     *                   type="string"
+     *               ),
+     *               @OA\Property(
+     *                   property="image",
+     *                   description="about image",
+     *                   type="string"
+     *               ),
+     *              @OA\Property(
+     *                   property="monofacture_id",
+     *                   description="monofacture id",
+     *                   type="number"
+     *               ),
+     *           )
+     *       )
+     *   ),
+     *   @OA\Response(response="400",description="Validate error"),
+     *   @OA\Response(response="200",description="Success create element"),
+     * ) *
+     * @param ComputerRequest $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+
+    public function store(ComputerRequest $request){
+        $model = $this->computerWriteRepository->create(new CreateComputer(
+            $request->get('name'), $request->get('desc'), $request->get('image'),
+            $request->get('monofacture_id')
+        ));
+    if(!$model){
+        return $this->responseWithMessage(500);
+    }
+    return $this->responseWithData(new ComputerResource($model), Response::HTTP_CREATED);
+   
+}
+
+
+/**
+       * @OA\Put(
+       *   path="/api/v1/computers/{id}",
+       *   tags={"computers"},
+       *   security={
+       *     {"bearerAuth": {}}
+       *   },
+       *   summary="Updates a computers in the store with form data",
+       *   description="",
+       *   operationId="update",
+       *   @OA\RequestBody(
+       *       required=false,
+       *       @OA\MediaType(
+       *           mediaType="application/x-www-form-urlencoded",
+       *           @OA\Schema(
+       *               type="object",
+       *               @OA\Property(
+       *                   property="name",
+       *                   description="name",
+       *                   type="string"
+       *               ),
+       *               @OA\Property(
+       *                   property="desc",
+       *                   description="desc",
+       *                   type="string"
+       *               ),
+       *               @OA\Property(
+       *                   property="image",
+       *                   description="image",
+       *                   type="string"
+       *               ),
+       *           )
+       *       )
+       *   ),
+       *   @OA\Parameter(
+       *     name="id",
+       *     in="path",
+       *     description="ID of Computer that needs to be updated",
+       *     required=true,
+       *     @OA\Schema(
+       *         type="integer",
+       *         format="int64"
+       *     )
+       *   ),
+       *   @OA\Response(response="500",description="Error in server"),
+       *   @OA\Response(response="400",description="Validate error"),
+       * )
+       * @param $id
+       * @param ComputerRequest $request
+       * @return \Illuminate\Http\JsonResponse
+       */
+  
+
+    public function update($id,ComputerRequest $request){
+        $model = $this->computerWriteRepository->update($id, new UpdateComputer($request->get('name'),
+        $request->get('desc'), $request->get('image'),  $request->get('monofacture_id')));
+        if(!$model){
+            return $this->responseWithMessage(500);
+        }
+        return $this->responseWithData(new ComputerResource($model), Response::HTTP_CREATED);
+       
+    }
+}

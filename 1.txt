@@ -1,0 +1,32 @@
+{
+  "computer_id": 13,
+  "product_id": 671
+},
+{
+  "computer_id": 13,
+  "product_id": 3375
+},
+{
+  "computer_id": 13,
+  "product_id": 3416
+},
+{
+  "computer_id": 13,
+  "product_id": 4907
+},
+{
+  "computer_id": 13,
+  "product_id": 3428
+},
+{
+  "computer_id": 13,
+  "product_id": 688
+},
+{
+  "computer_id": 13,
+  "product_id": 489
+},
+{
+  "computer_id": 13,
+  "product_id": 4965
+}
