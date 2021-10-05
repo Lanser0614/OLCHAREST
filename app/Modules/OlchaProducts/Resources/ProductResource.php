@@ -11,7 +11,11 @@ class ProductResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name_uz,
+            'name_uz' => $this->name_uz,
+            'name_oz' => $this->name_oz,
+            'name_ru' => $this->name_ru,
+            'alias' => $this->alias,
+            'images' => $this->images,
             'price' => $this->price,
             'category_id' => $this->category_id,
             'category name' => (new OlchaCategoriesResource($this->whenLoaded('category'))),

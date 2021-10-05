@@ -19,9 +19,7 @@ class ComputerProgramResource extends JsonResource
             'id' => $this->id,
             'computer_id' => $this->computer_id,
             'program_id' => $this->program_id,
-            'parent_id' => $this->program->parent_id,
-            'name' => $this->program->name,
-           //'program' => ProgramResource::collection($this->whenLoaded('program'))
+            'program' => new ProgramResource($this->whenLoaded('program'))
         ];
     }
 }
