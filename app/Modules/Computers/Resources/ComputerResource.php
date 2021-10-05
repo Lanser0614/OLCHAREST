@@ -16,13 +16,19 @@ class ComputerResource extends JsonResource
     public function toArray($request)
     {
         return [
+            
             'id' => $this->id,
             'name' => $this->name,
             'desc' => $this->desc,
+            'name_ru' => $this->name_ru,
+            'desc_ru' => $this->desc_ru,
+            'name_uz' => $this->name_uz,
+            'desc_uz' => $this->desc_uz,
             'image' => $this->image,
             'products' => ComputerForSale::collection($this->whenLoaded('product')),
             'program' => ComputerProgramResource::collection($this->whenLoaded('program')),
             'monofacture_id' => new ComputerMonofakturaResource($this->whenLoaded('manufactory'))
+          
         ];
     }
 

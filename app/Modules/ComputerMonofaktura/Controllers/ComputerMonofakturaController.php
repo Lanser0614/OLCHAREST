@@ -41,7 +41,8 @@ class ComputerMonofakturaController extends BaseApiController
      */
 
     public function index(){
-        return $this->responseWithData(ComputerMonofakturaResource::collection($this->computerMonofakturaRead->getMonofaktura()));
+        $model = $this->computerMonofakturaRead->getMonofaktura();
+        return response()->json(['ComputerMonofaktura' => ComputerMonofakturaResource::collection($model)]);
        // return $this->computerMonofakturaRead->getMonofaktura();
     }
 
@@ -77,7 +78,8 @@ class ComputerMonofakturaController extends BaseApiController
 
     public function show($id){
         $model = $this->computerMonofakturaRead->getMonofakturaById($id);
-        return $this->responseWithData(ComputerMonofakturaResource::collection($model));
+        return response()->json(['ComputerMonofaktura' => ComputerMonofakturaResource::collection($model)]);
+       // return $this->responseWithData(ComputerMonofakturaResource::collection($model));
     }
 
 

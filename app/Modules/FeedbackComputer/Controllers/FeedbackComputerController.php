@@ -40,8 +40,8 @@ class FeedbackComputerController extends BaseApiController
      */
 
     public function index(){
-        return $this->responseWithData(FeedbackResource::collection($this->feedbackRepositoryReadInterface->getAllFeedback()));
-        //return $this->feedbackRepositoryReadInterface->getAllFeedback();
+       $model = $this->feedbackRepositoryReadInterface->getAllFeedback();
+        return response()->json(['Feedback' => FeedbackResource::collection($model)]);
     }
 
 
@@ -115,7 +115,8 @@ class FeedbackComputerController extends BaseApiController
         if (empty($model)){
             $this->responseWithMessage(Response::HTTP_NOT_FOUND);
         }
-        return $this->responseWithData(FeedbackResource::collection($model));
+       // return $this->responseWithData(FeedbackResource::collection($model));
+       return response()->json(['Feedback' => FeedbackResource::collection($model)]);
     }
 
 

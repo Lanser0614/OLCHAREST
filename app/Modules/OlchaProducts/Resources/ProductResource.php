@@ -18,7 +18,7 @@ class ProductResource extends JsonResource
             'images' => $this->images,
             'price' => $this->price,
             'category_id' => $this->category_id,
-            'category name' => (new OlchaCategoriesResource($this->whenLoaded('category'))),
+            'Category' => (new OlchaCategoriesResource($this->whenLoaded('category'))),
         ];
     }
 

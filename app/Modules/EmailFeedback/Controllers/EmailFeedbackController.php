@@ -45,8 +45,9 @@ class EmailFeedbackController extends BaseApiController
 
 
     public  function index(){
-        return $this->responseWithData(EmailFeedbackResource::collection($this->emailFeedbackRead->getAllEmailFeedback()));
-       // return $this->emailFeedbackRead->getAllEmailFeedback();
+        
+      $model =  $this->emailFeedbackRead->getAllEmailFeedback();
+        return response()->json(['EmailFeedback' => EmailFeedbackResource::collection($model)]);
     }
 
 
@@ -86,8 +87,8 @@ class EmailFeedbackController extends BaseApiController
         if (empty($model)){
             return $this->responseWithMessage(500);
         }
-        return $this->responseWithData(EmailFeedbackResource::collection($model));
-        //return $model;
+        //return $this->responseWithData(EmailFeedbackResource::collection($model));
+        return response()->json(['EmailFeedback' => EmailFeedbackResource::collection($model)]);
     }
 
 

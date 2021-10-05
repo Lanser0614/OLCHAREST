@@ -17,7 +17,7 @@ use HasFactory;
 
 protected $table = 'computers';
 
-protected $fillable = ['name', 'desc', 'image', 'monofacture_id'];
+protected $fillable = ['name', 'desc', 'image', 'monofacture_id', 'name_ru', 'name_uz', 'desc_ru', 'desc_uz'];
 
 protected static function newFactory(): ComputerFactory
 {

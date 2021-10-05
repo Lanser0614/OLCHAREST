@@ -48,9 +48,8 @@ class ComputerController extends BaseApiController
     public function index(): \Illuminate\Http\JsonResponse
     {
 
-
-       return $this->responseWithData(ComputerResourceAll::collection($this->computerReedRepository->getComputers()));
-
+        $model = $this->computerReedRepository->getComputers();
+        return response()->json(['Computers' => ComputerResourceAll::collection($model)]);
     }
     /**
      * @OA\Get(path="/api/v1/computers/{id}",
@@ -85,7 +84,8 @@ class ComputerController extends BaseApiController
         if (empty($model)) {
             return $this->responseWithMessage(Response::HTTP_NOT_FOUND);
         }
-      return $this->responseWithData(new ComputerResource($model));
+      //return $this->responseWithData(new ComputerResource($model));
+      return response()->json(['Computers' => new ComputerResourceAll($model)]);
     }
 
 

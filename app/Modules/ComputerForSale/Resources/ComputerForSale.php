@@ -19,10 +19,10 @@ class ComputerForSale extends JsonResource
     {
     
         return [
-            'id' => $this->id,
-            'product_id' => $this->product_id,
-            'computer_id' => $this->computer_id,
-            'computer' =>$this->computer->name,
+            // 'id' => $this->id,
+            // 'product_id' => $this->product_id,
+            // 'computer_id' => $this->computer_id,
+            // 'computer' =>$this->computer->name,
            'product'=> (new ProductForComputer($this->whenLoaded('product'))),
         ];
     }

@@ -21,6 +21,6 @@ class ComputerMonofakturaReadRepository implements ComputerMonofakturaReadReposi
 
     public function getMonofakturaById($id)
     {
-        return $this->model::where('id', '=', $id)->with('computer')->get();
+        return $this->model::where('id', '=', $id)->get();
     }
 }
