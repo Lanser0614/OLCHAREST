@@ -23,6 +23,7 @@ class ComputerResourceAll extends JsonResource
             'desc_ru' => $this->desc_ru,
             'name_uz' => $this->name_uz,
             'desc_uz' => $this->desc_uz,
+            'alias' => $this->alias,
             'image' => $this->image,
             'monofacture_id' => new ComputerMonofakturaResource($this->whenLoaded('manufactory')),
             'products' => ComputerForSale::collection($this->whenLoaded('product')),

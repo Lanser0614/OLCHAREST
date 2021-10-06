@@ -116,6 +116,26 @@ class ComputerController extends BaseApiController
      *                   type="string"
      *               ),
      *               @OA\Property(
+     *                   property="name_ru",
+     *                   description="name book",
+     *                   type="string"
+     *               ),
+     *               @OA\Property(
+     *                   property="desc_ru",
+     *                   description="about book",
+     *                   type="string"
+     *               ),
+     *               @OA\Property(
+     *                   property="name_uz",
+     *                   description="name book",
+     *                   type="string"
+     *               ),
+     *               @OA\Property(
+     *                   property="desc_uz",
+     *                   description="about book",
+     *                   type="string"
+     *               ),
+     *               @OA\Property(
      *                   property="image",
      *                   description="about image",
      *                   type="string"
@@ -138,6 +158,8 @@ class ComputerController extends BaseApiController
     public function store(ComputerRequest $request){
         $model = $this->computerWriteRepository->create(new CreateComputer(
             $request->get('name'), $request->get('desc'), $request->get('image'),
+            $request->get('name_ru'), $request->get('desc_ru'), 
+            $request->get('name_uz'), $request->get('desc_uz'),
             $request->get('monofacture_id')
         ));
     if(!$model){
@@ -174,6 +196,26 @@ class ComputerController extends BaseApiController
        *                   description="desc",
        *                   type="string"
        *               ),
+       *                 @OA\Property(
+     *                   property="name_ru",
+     *                   description="name book",
+     *                   type="string"
+     *               ),
+     *                   @OA\Property(
+     *                   property="desc_ru",
+     *                   description="about book",
+     *                   type="string"
+     *               ),
+     *               @OA\Property(
+     *                   property="name_uz",
+     *                   description="name book",
+     *                   type="string"
+     *               ),
+     *               @OA\Property(
+     *                   property="desc_uz",
+     *                   description="about book",
+     *                   type="string"
+     *               ),
        *               @OA\Property(
        *                   property="image",
        *                   description="image",
@@ -202,8 +244,12 @@ class ComputerController extends BaseApiController
   
 
     public function update($id,ComputerRequest $request){
-        $model = $this->computerWriteRepository->update($id, new UpdateComputer($request->get('name'),
-        $request->get('desc'), $request->get('image'),  $request->get('monofacture_id')));
+        $model = $this->computerWriteRepository->update($id, new UpdateComputer(
+            $request->get('name'), $request->get('desc'), $request->get('image'),
+            $request->get('name_ru'), $request->get('desc_ru'), 
+            $request->get('name_uz'), $request->get('desc_uz'),
+            $request->get('monofacture_id')
+    ));
         if(!$model){
             return $this->responseWithMessage(500);
         }

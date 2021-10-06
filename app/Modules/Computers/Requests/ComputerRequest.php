@@ -26,6 +26,10 @@ class ComputerRequest extends FormRequest
         return [
             'name' => 'required|string',
             'desc' => 'required|string',
+            'name_ru' => 'required|string',
+            'desc_ru' => 'required|string',
+            'name_uz' => 'required|string',
+            'desc_uz' => 'required|string',
             'image' => 'required|string',
             'monofacture_id' => 'required|numeric'
         ];

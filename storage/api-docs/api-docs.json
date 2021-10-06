@@ -1004,6 +1004,22 @@
                                         "description": "about book",
                                         "type": "string"
                                     },
+                                    "name_ru": {
+                                        "description": "name book",
+                                        "type": "string"
+                                    },
+                                    "desc_ru": {
+                                        "description": "about book",
+                                        "type": "string"
+                                    },
+                                    "name_uz": {
+                                        "description": "name book",
+                                        "type": "string"
+                                    },
+                                    "desc_uz": {
+                                        "description": "about book",
+                                        "type": "string"
+                                    },
                                     "image": {
                                         "description": "about image",
                                         "type": "string"
@@ -1094,6 +1110,22 @@
                                     },
                                     "desc": {
                                         "description": "desc",
+                                        "type": "string"
+                                    },
+                                    "name_ru": {
+                                        "description": "name book",
+                                        "type": "string"
+                                    },
+                                    "desc_ru": {
+                                        "description": "about book",
+                                        "type": "string"
+                                    },
+                                    "name_uz": {
+                                        "description": "name book",
+                                        "type": "string"
+                                    },
+                                    "desc_uz": {
+                                        "description": "about book",
                                         "type": "string"
                                     },
                                     "image": {

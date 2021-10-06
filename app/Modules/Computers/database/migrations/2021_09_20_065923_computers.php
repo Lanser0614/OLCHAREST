@@ -22,6 +22,7 @@ class computers extends Migration
             $table->text('desc_ru');
             $table->text('desc_uz');
             $table->string('image');
+            $table->string('alias')->nullable();
             $table->unsignedBigInteger('monofacture_id');
             $table->timestamps();
         });

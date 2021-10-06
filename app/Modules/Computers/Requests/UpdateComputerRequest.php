@@ -13,7 +13,7 @@ class UpdateComputerRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return auth()->check();
+        return true;
     }
 
     /**
@@ -26,7 +26,12 @@ class UpdateComputerRequest extends FormRequest
         return [
             'name' => 'required|string',
             'desc' => 'required|string',
+            'name_ru' => 'required|string',
+            'desc_ru' => 'required|string',
+            'name_uz' => 'required|string',
+            'desc_uz' => 'required|string',
             'image' => 'required|string',
+            'monofacture_id' => 'required|numeric'
         ];
     }
 }

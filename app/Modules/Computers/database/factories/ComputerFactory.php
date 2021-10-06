@@ -26,6 +26,7 @@ class ComputerFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
+            'alias' => $this->faker->slug,
             'desc' => $this->faker->text,
             'name_ru' => $this->faker->name,
             'desc_ru' => $this->faker->text,
