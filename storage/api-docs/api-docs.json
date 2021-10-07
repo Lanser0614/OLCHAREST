@@ -1153,6 +1153,37 @@
                 ]
             }
         },
+        "/api/v1/computers/{slug}": {
+            "get": {
+                "tags": [
+                    "computers"
+                ],
+                "summary": "Get one computers by alias",
+                "description": "",
+                "operationId": "slug",
+                "parameters": [
+                    {
+                        "name": "slug",
+                        "in": "path",
+                        "description": "Computer Alias",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
         "/api/v1/email_feedback": {
             "get": {
                 "tags": [

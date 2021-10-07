@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Computers\Controllers;
+namespace App\Modules\computers\Controllers;
 
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Request;
@@ -48,8 +48,8 @@ class ComputerController extends BaseApiController
     public function index(): \Illuminate\Http\JsonResponse
     {
 
-        $model = $this->computerReedRepository->getComputers();
-        return response()->json(['Computers' => ComputerResourceAll::collection($model)]);
+        $model = $this->computerReedRepository->getcomputers();
+        return response()->json(['computers' => ComputerResourceAll::collection($model)]);
     }
     /**
      * @OA\Get(path="/api/v1/computers/{id}",
@@ -80,13 +80,54 @@ class ComputerController extends BaseApiController
 
     public function show($id): \Illuminate\Http\JsonResponse
     {
-        $model = $this->computerReedRepository->getComputersById($id);
+        $model = $this->computerReedRepository->getcomputersById($id);
         if (empty($model)) {
             return $this->responseWithMessage(Response::HTTP_NOT_FOUND);
         }
       //return $this->responseWithData(new ComputerResource($model));
-      return response()->json(['Computers' => new ComputerResourceAll($model)]);
+      return response()->json(['computers' => new ComputerResourceAll($model)]);
     }
+
+
+
+
+     /**
+     * @OA\Get(path="/api/v1/computers/{slug}",
+     *   tags={"computers"},
+     *   security={
+     *     {"bearerAuth": {}}
+     *   },
+     *   summary="Get one computers by alias",
+     *   description="",
+     *   operationId="slug",
+     *     @OA\Parameter(
+     *         name="slug",
+     *         in="path",
+     *         description="Computer Alias",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="string",
+     *         ),
+     *     ),
+     *   @OA\Response(
+     *     response=200,
+     *     description="successful operation",
+     *   ),
+     * )
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+
+
+    public function slug(string $slug){
+        $model = $this->computerReedRepository->getBySlug($slug);
+        if(empty($model)){
+            return $this->responseWithMessage(Response::HTTP_NOT_FOUND);
+        }
+       return response()->json(['computers' => new ComputerResourceAll($model)]);
+    }
+
+
 
 
 /**

@@ -23,4 +23,11 @@ class ComputerReedRepository implements ComputerReedRepositoryInterface
     {
         return $this->model::with(['product.product.product.category', 'program.program', 'manufactory'])->find($id);
     }
+
+
+    public function getBySlug(string $slug)
+    {
+        return $this->model::where('alias', '=', $slug)->with(['product.product.product.category', 'program.program', 'manufactory'])->first();
+    }
+
 }

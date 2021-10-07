@@ -9,4 +9,6 @@ interface ComputerReedRepositoryInterface
     public function getComputers();
 
     public function getComputersById($id);
+
+    public function getBySlug(string $slug);
 }
