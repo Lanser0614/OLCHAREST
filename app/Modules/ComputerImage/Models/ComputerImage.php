@@ -2,7 +2,7 @@
 
 namespace App\Modules\ComputerImage\Models;
 
-use App\Modules\ComputerImage\Database\Factories\ComputerImageFactory;
+use App\Modules\ComputerImage\database\factories\ComputerImageFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -16,5 +16,7 @@ class ComputerImage extends Model
     {
         return ComputerImageFactory::new();
     }
+
+
 
 }

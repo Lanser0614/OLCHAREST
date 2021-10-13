@@ -11,6 +11,7 @@ use App\Modules\Books\Models\Books;
 use App\Modules\CategoryForComputer\database\seeders\CategoryForComputerSeeder;
 use App\Modules\ComputerForProgram\database\seeders\ComputerForProgramSeeder;
 use App\Modules\ComputerForSale\database\seeders\ComputerForSaleSeeder;
+use App\Modules\ComputerImage\database\seeders\ComputerImage;
 use App\Modules\ComputerMonofaktura\database\seeders\ComputerMonofakturaSeeder;
 use App\Modules\Computers\database\seeders\ComputerSeeder;
 use App\Modules\EmailFeedback\database\seeders\EmailFeedbackSeeder;
@@ -33,7 +34,7 @@ class DatabaseSeeder extends Seeder
     //  $this->call(UserSeeder::class);
     //  $this->call(ProgramSeeder::class);
     //  $this->call(ProductForComputerSeeder::class);
-      $this->call(ComputerSeeder::class);
+     // $this->call(ComputerSeeder::class);
     //  $this->call(ComputerForSaleSeeder::class);
     //  $this->call(ComputerForProgramSeeder::class);
     //  $this->call(RelatedProductSeeder::class);
@@ -42,5 +43,6 @@ class DatabaseSeeder extends Seeder
     //  $this->call(FeedbackSeeder::class);
     //  $this->call(AskCallSeeder::class);
     //     $this->call(EmailFeedbackSeeder::class);
+        $this->call(ComputerImage::class);
     }
 }

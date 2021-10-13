@@ -4,6 +4,7 @@ namespace App\Modules\Computers\Models;
 
 use App\Modules\ComputerForProgram\Models\ComputerForProgram;
 use App\Modules\ComputerForSale\Models\ComputerForSale;
+use App\Modules\ComputerImage\Models\ComputerImage;
 use App\Modules\ComputerMonofaktura\Models\ComputerMonofaktura;
 use App\Modules\Computers\database\factories\ComputerFactory;
 use App\Modules\ProductForComputer\Models\ProductForComputer;
@@ -39,5 +40,10 @@ protected static function newFactory(): ComputerFactory
 //    public function product(){
 //        return $this->hasMany(ProductForComputer::class,  'id','product_id');
 //    }
+
+
+public function ComputerImages(){
+    return $this->hasMany(ComputerImage::class, computer_id, id);
+}
 
 }

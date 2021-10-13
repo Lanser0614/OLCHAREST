@@ -196,6 +196,7 @@ return [
         \App\Modules\AskCall\Providers\AskCallServiceProvider::class,
         OlchaCategoriesServiceProvider::class,
         \App\Modules\EmailFeedback\Providers\EmailFeedbackServiceProvider::class,
+        \App\Modules\ComputerImage\Providers\ComputerImageServiceProvider::class,
 
 
     ],

@@ -17,8 +17,8 @@ class ComputerResourceAll extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
-            'desc' => $this->desc,
+            'name_oz' => $this->name,
+            'desc_oz' => $this->desc,
             'name_ru' => $this->name_ru,
             'desc_ru' => $this->desc_ru,
             'name_uz' => $this->name_uz,
@@ -28,6 +28,7 @@ class ComputerResourceAll extends JsonResource
             'manufacturer' => new ComputerMonofakturaResource($this->whenLoaded('manufactory')),
             'products' => ComputerForSale::collection($this->whenLoaded('product')),
             'program' => ComputerProgramResource::collection($this->whenLoaded('program')),
+
         ];
     }
 
