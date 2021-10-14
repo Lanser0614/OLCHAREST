@@ -14,8 +14,14 @@ class FeedbackFactory extends Factory
     {
        return [
            'user_id' => $this->faker->numberBetween($min = 1, $max = 10),
-           'title' => $this->faker->realText($maxNbChars = 60, $indexSize = 1),
-           'description' => $this->faker->realText($maxNbChars = 200, $indexSize = 2)
+           'title_oz' => $this->faker->realText($maxNbChars = 60, $indexSize = 1),
+           'description_oz' => $this->faker->realText($maxNbChars = 200, $indexSize = 2),
+
+           'title_uz' => $this->faker->realText($maxNbChars = 60, $indexSize = 1),
+           'description_uz' => $this->faker->realText($maxNbChars = 200, $indexSize = 2),
+
+           'title_ru' => $this->faker->realText($maxNbChars = 60, $indexSize = 1),
+           'description_ru' => $this->faker->realText($maxNbChars = 200, $indexSize = 2),
        ];
     }
 }

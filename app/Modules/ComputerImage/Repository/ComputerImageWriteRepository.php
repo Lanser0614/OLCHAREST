@@ -7,7 +7,7 @@ use App\Modules\ComputerImage\Models\ComputerImage;
 
 class ComputerImageWriteRepository implements ComputerImageWriteRepositoryInterface
 {
-    public $model;
+    protected $model;
 
     public function __construct(ComputerImage $model)
     {

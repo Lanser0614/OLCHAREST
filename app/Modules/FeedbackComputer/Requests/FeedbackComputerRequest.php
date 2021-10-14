@@ -29,8 +29,12 @@ class FeedbackComputerRequest extends FormRequest
     {
         return [
             'user_id' => 'required|numeric',
-            'title' => 'required',
-            'description' => 'required',
+            'title_oz' => 'required',
+            'description_oz' => 'required',
+            'title_uz' => 'required',
+            'description_uz' => 'required',
+            'title_ru' => 'required',
+            'description_ru' => 'required',
         ];
     }
 }

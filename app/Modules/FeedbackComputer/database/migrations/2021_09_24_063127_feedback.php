@@ -16,8 +16,12 @@ class Feedback extends Migration
         Schema::create('feedback_computer', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->string('title');
-            $table->text('description');
+            $table->string('title_oz');
+            $table->text('description_oz');
+            $table->string('title_uz');
+            $table->text('description_uz');
+            $table->string('title_ru');
+            $table->text('description_ru');
             $table->timestamps();
         });
     }

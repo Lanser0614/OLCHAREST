@@ -12,7 +12,7 @@ class Feedback extends Model
 
     protected $table = 'feedback_computer';
 
-    protected $fillable = ['title','user_id', 'description'];
+    protected $fillable = ['title_oz','user_id', 'description_oz','title_uz','description_uz','title_ru','description_ru'];
 
     protected static function newFactory(): FeedbackFactory
     {

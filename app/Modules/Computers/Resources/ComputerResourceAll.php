@@ -6,6 +6,7 @@ namespace App\Modules\Computers\Resources;
 //use App\Http\Resources\ComputerProgramResource;
 use App\Modules\ComputerForProgram\Resources\ComputerProgramResource;
 use App\Modules\ComputerForSale\Resources\ComputerForSale;
+use App\Modules\ComputerImage\Resource\ComputerImageResource;
 use App\Modules\ComputerMonofaktura\Resources\ComputerMonofakturaResource;
 use App\Modules\OlchaProducts\Resources\ProductResource;
 use App\Modules\ProductForComputer\Resources\ProductForComputer;
@@ -28,6 +29,7 @@ class ComputerResourceAll extends JsonResource
             'manufacturer' => new ComputerMonofakturaResource($this->whenLoaded('manufactory')),
             'products' => ComputerForSale::collection($this->whenLoaded('product')),
             'program' => ComputerProgramResource::collection($this->whenLoaded('program')),
+            'image' => ComputerImageResource::collection($this->whenLoaded('ComputerImages')),
 
         ];
     }

@@ -165,7 +165,10 @@ class FeedbackComputerController extends BaseApiController
     {
 
         $model = $this->feedbackWriteRepositoryInterface->create(new CreateFeedbackComputerDTO(
-        $request->get('user_id'), $request->get('title'), $request->get('description')));
+        $request->get('user_id'), $request->get('title_oz'), $request->get('description_oz'),
+        $request->get('title_uz'), $request->get('description_uz'),
+        $request->get('title_ru'), $request->get('description_ru')
+    ));
         if(!$model){
             return $this->responseWithMessage(500);
         }

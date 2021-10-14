@@ -15,9 +15,13 @@ class FeedbackResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'title' => $this->title,
-            'description' => $this->description,
-            'user_id' => $this->user_id
+            'title_oz' => $this->title_oz,
+            'description_oz' => $this->description_oz,
+            'user_id' => $this->user_id,
+            'title_uz' => $this->title_uz,
+            'description_uz' => $this->description_uz,
+            'title_ru' => $this->title_ru,
+            'description_ru' => $this->description_ru
         ];
     }
 }

@@ -16,18 +16,18 @@ class ComputerReedRepository implements ComputerReedRepositoryInterface
 
     public function getComputers()
     {
-      return  $this->model::with(['product.product.product.category', 'program.program', 'manufactory'])->get();
+      return  $this->model::with(['product.product.product.category', 'program.program', 'manufactory', 'ComputerImages'])->get();
     }
 
     public function getComputersById($id)
     {
-        return $this->model::with(['product.product.product.category', 'program.program', 'manufactory'])->find($id);
+        return $this->model::with(['product.product.product.category', 'program.program', 'manufactory', 'ComputerImages'])->find($id);
     }
 
 
     public function getBySlug(string $slug)
     {
-        return $this->model::where('alias', '=', $slug)->with(['product.product.product.category', 'program.program', 'manufactory'])->first();
+        return $this->model::where('alias', '=', $slug)->with(['product.product.product.category', 'program.program', 'manufactory', 'ComputerImages'])->first();
     }
 
 }

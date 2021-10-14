@@ -25,7 +25,8 @@ class ComputerImageRequest extends FormRequest
     public function rules()
     {
         return [
-            'computer_id' => 'required|numeric',
+            'computer_id' => 'required',
+            // dd($this->computer_id),
             'image' => 'required',
         ];
     }

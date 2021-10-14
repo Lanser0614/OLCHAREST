@@ -5,10 +5,12 @@ namespace App\Modules\ComputerImage\Controllers;
 
 use App\Http\Controllers\BaseApiController;
 use App\Modules\ComputerImage\DTO\CreateComputerImageDTO;
+use App\Modules\ComputerImage\Models\ComputerImage;
 //use App\Modules\ComputerImage\Repository\ComputerImageWriteRepositoryInterface;
 use App\Modules\ComputerImage\Requests\ComputerImageRequest;
 use App\Modules\ComputerImage\Resource\ComputerImageResource;
 use App\Modules\ComputerImage\Repository\ComputerImageWriteRepositoryInterface;
+use Illuminate\Http\Request;
 
 class ComputerImageController extends BaseApiController
 {
@@ -74,20 +76,24 @@ class ComputerImageController extends BaseApiController
      */
 
 
-    public function store(ComputerImageRequest $request)
+    public function store(ComputerImageRequest $request): \Illuminate\Http\JsonResponse
     {
-        $model = $this->ComputerImageWrite->create(new CreateComputerImageDTO(
-            $request->get('computer_id'), $request->get('image')
-        ));
-        if($model){
-            return $this->responseWithMessage(500);
-        }
-        return $this->responseWithData(new ComputerImageResource($model));
+    $model = $this->ComputerImageWrite->create(new CreateComputerImageDTO(
+        $request->get('computer_id'), $request->get('image')
+    ));
+    return  $model;
+    // $image = new ComputerImage();
+    // $image->computer_id = $request->computer_id;
+    // $image->image=$request->image;
+
+    // $image->save();
+    // return $image;
+       
     }
 
 
     public function destroy($id)
     {
-    # code...
+    
     }
 }
