@@ -9,8 +9,9 @@ use Illuminate\Database\Eloquent\Model;
 class ComputerImage extends Model
 {
     use HasFactory;
-    protected $fillable = ['computer_id', 'image'];
+  
     protected $table = 'computer_image';
+    protected $fillable = ['computer_id', 'image'];
 
     protected static function newFactory(): ComputerImageFactory
     {

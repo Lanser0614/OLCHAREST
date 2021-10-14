@@ -34,7 +34,8 @@ class ComputerImageServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->registerMigrations();
         }
-    $this->app->bind(ComputerImageWriteRepository::class, ComputerImageWriteRepositoryInterface::class);
+//        $this->app->bind(ComputerForSaleRepositoryInterface::class, ComputerForSaleRepository::class);
+        $this->app->bind(ComputerImageWriteRepositoryInterface::class, ComputerImageWriteRepository::class);
     }
 
 
