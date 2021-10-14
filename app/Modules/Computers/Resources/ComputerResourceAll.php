@@ -25,11 +25,11 @@ class ComputerResourceAll extends JsonResource
             'name_uz' => $this->name_uz,
             'desc_uz' => $this->desc_uz,
             'alias' => $this->alias,
-            'image' => $this->image,
+            'main_image' => $this->image,
             'manufacturer' => new ComputerMonofakturaResource($this->whenLoaded('manufactory')),
             'products' => ComputerForSale::collection($this->whenLoaded('product')),
             'program' => ComputerProgramResource::collection($this->whenLoaded('program')),
-            'image' => ComputerImageResource::collection($this->whenLoaded('ComputerImages')),
+            'images' => ComputerImageResource::collection($this->whenLoaded('ComputerImages')),
 
         ];
     }
