@@ -19,7 +19,7 @@ class RelatedProductResource extends JsonResource
         return [
            'product_id' => $this->product_id,
            'related_product_id' => $this->related_product_id,
-           'MotherBoard' => (new ProductForComputer($this->whenLoaded('mainProduct'))),
+           'product_info' => (new ProductForComputer($this->whenLoaded('mainProduct'))),
            'related_product'=> (ProductForComputer::collection($this->whenLoaded('product'))),
         ];
     }
