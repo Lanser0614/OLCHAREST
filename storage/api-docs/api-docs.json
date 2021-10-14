@@ -827,6 +827,49 @@
                 ]
             }
         },
+        "/api/v1/computer_image": {
+            "post": {
+                "tags": [
+                    "computer image"
+                ],
+                "summary": "Create new image for computer",
+                "description": "",
+                "operationId": "store",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "computer_id": {
+                                        "description": "computer_id",
+                                        "type": "number"
+                                    },
+                                    "image": {
+                                        "description": "image",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "Validate error"
+                    },
+                    "200": {
+                        "description": "Success create element"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
         "/api/v1/computerManufactory": {
             "get": {
                 "tags": [

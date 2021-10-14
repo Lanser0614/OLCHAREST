@@ -27,10 +27,10 @@ class SwaggerController extends BaseController
     /**
      * Dump api-docs content endpoint. Supports dumping a json, or yaml file.
      *
-     * @param Request $request
-     * @param string $file
-     *
+     * @param  Request  $request
+     * @param  string  $file
      * @return Response
+     *
      * @throws L5SwaggerException
      */
     public function docs(Request $request, string $file = null)
@@ -93,8 +93,7 @@ class SwaggerController extends BaseController
     /**
      * Display Swagger API page.
      *
-     * @param Request $request
-     *
+     * @param  Request  $request
      * @return Response
      */
     public function api(Request $request)
@@ -110,6 +109,7 @@ class SwaggerController extends BaseController
         }
 
         $urlToDocs = $this->generateDocumentationFileURL($documentation, $config);
+        $useAbsolutePath = config('l5-swagger.documentations.'.$documentation.'.paths.use_absolute_path', true);
 
         // Need the / at the end to avoid CORS errors on Homestead systems.
         return ResponseFacade::make(
@@ -120,6 +120,7 @@ class SwaggerController extends BaseController
                 'operationsSorter' => $config['operations_sort'],
                 'configUrl' => $config['additional_config_url'],
                 'validatorUrl' => $config['validator_url'],
+                'useAbsolutePath' => $useAbsolutePath,
             ]),
             200
         );
@@ -128,9 +129,9 @@ class SwaggerController extends BaseController
     /**
      * Display Oauth2 callback pages.
      *
-     * @param Request $request
-     *
+     * @param  Request  $request
      * @return string
+     *
      * @throws L5SwaggerException
      */
     public function oauth2Callback(Request $request)
@@ -143,9 +144,8 @@ class SwaggerController extends BaseController
     /**
      * Generate URL for documentation file.
      *
-     * @param string $documentation
-     * @param array $config
-     *
+     * @param  string  $documentation
+     * @param  array  $config
      * @return string
      */
     protected function generateDocumentationFileURL(string $documentation, array $config)
@@ -159,9 +159,12 @@ class SwaggerController extends BaseController
             $fileUsedForDocs = $config['paths']['docs_yaml'];
         }
 
+        $useAbsolutePath = config('l5-swagger.documentations.'.$documentation.'.paths.use_absolute_path', true);
+
         return route(
             'l5-swagger.'.$documentation.'.docs',
-            $fileUsedForDocs
+            $fileUsedForDocs,
+            $useAbsolutePath
         );
     }
 }

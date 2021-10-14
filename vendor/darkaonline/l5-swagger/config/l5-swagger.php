@@ -90,6 +90,11 @@ return [
             'swagger_ui_assets_path' => env('L5_SWAGGER_UI_ASSETS_PATH', 'vendor/swagger-api/swagger-ui/dist/'),
 
             /*
+             * Edit to include full URL in ui for assets
+            */
+            'use_absolute_path' => env('L5_SWAGGER_USE_ABSOLUTE_PATH', true),
+
+            /*
              * Absolute path to directories that should be exclude from scanning
              * @deprecated Please use `scanOptions.exclude`
              * `scanOptions.exclude` overwrites this
@@ -100,12 +105,14 @@ return [
         'scanOptions' => [
             /**
              * analyser: defaults to \OpenApi\StaticAnalyser .
+             *
              * @see \OpenApi\scan
              */
             'analyser' => null,
 
             /**
              * analysis: defaults to a new \OpenApi\Analysis .
+             *
              * @see \OpenApi\scan
              */
             'analysis' => null,
@@ -122,6 +129,7 @@ return [
 
             /**
              * pattern: string       $pattern File pattern(s) to scan (default: *.php) .
+             *
              * @see \OpenApi\scan
              */
             'pattern' => null,

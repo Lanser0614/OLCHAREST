@@ -43,7 +43,7 @@ protected static function newFactory(): ComputerFactory
 
 
 public function ComputerImages(){
-    return $this->hasMany(ComputerImage::class, computer_id, id);
+    return $this->hasMany(ComputerImage::class, 'computer_id', 'id');
 }
 
 }

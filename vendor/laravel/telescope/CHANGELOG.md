@@ -1,6 +1,19 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/telescope/compare/v4.6.3...4.x)
+## [Unreleased](https://github.com/laravel/telescope/compare/v4.6.5...4.x)
+
+
+## [v4.6.5 (2021-10-05)](https://github.com/laravel/telescope/compare/v4.6.4...v4.6.5)
+
+### Fixed
+- Fix mail to check to allow for null to fields ([#1133](https://github.com/laravel/telescope/pull/1133))
+
+
+## [v4.6.4 (2021-09-16)](https://github.com/laravel/telescope/compare/v4.6.3...v4.6.4)
+
+### Fixed
+- Don't log HTTP requests to Telescope endpoints ([#1127](https://github.com/laravel/telescope/pull/1127))
+- Laravel Octane fix: GateWatcher handles stack trace caller not found ([#1128](https://github.com/laravel/telescope/pull/1128))
 
 
 ## [v4.6.3 (2021-09-14)](https://github.com/laravel/telescope/compare/v4.6.2...v4.6.3)

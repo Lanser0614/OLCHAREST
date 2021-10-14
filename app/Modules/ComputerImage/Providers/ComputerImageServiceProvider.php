@@ -4,6 +4,8 @@ namespace App\Modules\ComputerImage\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use App\Modules\ComputerImage\Repository\ComputerImageWriteRepository;
+use App\Modules\ComputerImage\Repository\ComputerImageWriteRepositoryInterface;
 
 class ComputerImageServiceProvider extends ServiceProvider
 {
@@ -32,8 +34,7 @@ class ComputerImageServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->registerMigrations();
         }
-//        $this->app->bind(ComputerForSaleRepositoryInterface::class, ComputerForSaleRepository::class);
-//        $this->app->bind(ComputerForSaleWriteRepositoryInterface::class, ComputerForSaleWriteRepository::class);
+    $this->app->bind(ComputerImageWriteRepository::class, ComputerImageWriteRepositoryInterface::class);
     }
 
 
