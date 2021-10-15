@@ -8,6 +8,7 @@ use App\Modules\RelatedProduct\DTO\CreateRelatedProductDTO;
 use App\Modules\RelatedProduct\DTO\UpdateRelatedProductDTO;
 use App\Modules\RelatedProduct\Requests\RelatedProductRequest;
 use App\Modules\RelatedProduct\Resources\RelatedProductResource;
+use App\Modules\RelatedProduct\Resources\RelatedProductResourceId;
 use App\Modules\RelatedProduct\Repository\RelatedProductRepositoryInterface;
 use App\Modules\RelatedProduct\Repository\RelatedProductWriteRepositoryInterFace;
 
@@ -130,7 +131,7 @@ class RelatedProductController extends BaseApiController
         if(!$model){
             return $this->responseWithMessage(500);
         }
-        return $this->responseWithData(new RelatedProductResource($model), Response::HTTP_CREATED);
+        return $this->responseWithData(new RelatedProductResourceId($model), Response::HTTP_CREATED);
     }
 
 
@@ -191,7 +192,7 @@ class RelatedProductController extends BaseApiController
         if(!$model){
             return $this->responseWithMessage(500);
         }
-        return $this->responseWithData(new RelatedProductResource($model), Response::HTTP_CREATED);
+        return $this->responseWithData(new RelatedProductResourceId($model), Response::HTTP_CREATED);
     }
 
 

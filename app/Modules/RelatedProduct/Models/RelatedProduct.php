@@ -25,7 +25,7 @@ class RelatedProduct extends Model
 
 
     public function mainProduct(){
-        return $this->hasOne(ProductForComputer::class, 'product_id', 'product_id');
+        return $this->hasOne(ProductForComputer::class, 'product_id', 'related_product_id');
     }
 
 

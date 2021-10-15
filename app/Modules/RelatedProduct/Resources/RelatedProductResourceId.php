@@ -6,7 +6,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 use App\Modules\ComputerForSale\Resources\ComputerForSale;
 use App\Modules\ProductForComputer\Resources\ProductForComputer;
 
-class RelatedProductResource extends JsonResource
+class RelatedProductResourceId extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,10 +17,11 @@ class RelatedProductResource extends JsonResource
     public function toArray($request)
     {
         return [
+           
             'product_id' => $this->product_id,
-        //    'related_product_id' => $this->related_product_id,
-            'related_product' => (new ProductForComputer($this->whenLoaded('mainProduct'))),
-        //   'related_product'=> (ProductForComputer::collection($this->whenLoaded('product'))),
+            'related_product_id' => $this->related_product_id,
+         //  'product_info' => (new ProductForComputer($this->whenLoaded('mainProduct'))),
+         //  'related_product'=> (new ProductForComputer($this->whenLoaded('product'))),
         ];
     }
 }
