@@ -79,6 +79,8 @@ class RelatedProductController extends BaseApiController
 
     public function show($id){
         $model = $this->relatedProduct->getRelatedByProductId($id);
+      //  return json_decode($model);
+     // return $model;
         return $this->responseWithData(RelatedProductResource::collection($model));
     }
 
