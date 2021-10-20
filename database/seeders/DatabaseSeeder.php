@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
     {
     //  $this->call(BookSeeder::class);
     //  $this->call(UserSeeder::class);
-    //  $this->call(ProgramSeeder::class);
+    // $this->call(ProgramSeeder::class);
     //  $this->call(ProductForComputerSeeder::class);
      // $this->call(ComputerSeeder::class);
     //  $this->call(ComputerForSaleSeeder::class);
@@ -40,9 +40,9 @@ class DatabaseSeeder extends Seeder
     //  $this->call(RelatedProductSeeder::class);
     //  $this->call(CategoryForComputerSeeder::class);
     // $this->call(ComputerMonofakturaSeeder::class);
-    //  $this->call(FeedbackSeeder::class);
+      $this->call(FeedbackSeeder::class);
     //  $this->call(AskCallSeeder::class);
     //     $this->call(EmailFeedbackSeeder::class);
-        $this->call(ComputerImage::class);
+     //   $this->call(ComputerImage::class);
     }
 }

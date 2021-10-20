@@ -15,8 +15,10 @@ class Program extends Migration
     {
         Schema::create('programs_table', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('image');
+            $table->string('name_ru');
+            $table->string('name_uz');
+            $table->string('name_oz');
+            $table->string('image')->nullable();
             $table->unsignedBigInteger('parent_id')->nullable();
             $table->timestamps();
         });

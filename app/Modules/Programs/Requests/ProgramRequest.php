@@ -15,7 +15,7 @@ class ProgramRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return auth()->check();
+        return true;
     }
 
     /**
@@ -26,9 +26,10 @@ class ProgramRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-           
-            
+            'name_ru' => 'required',
+            'name_uz' => 'required',
+            'name_oz' => 'required', 
+            'image' => ''   
         ];
     }
 }

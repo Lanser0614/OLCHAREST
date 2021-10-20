@@ -13,6 +13,7 @@ class FeedbackSeeder extends Seeder
 {
 
     public function run(){
+        Feedback::truncate();
         Feedback::factory(10)->create();
     }
 

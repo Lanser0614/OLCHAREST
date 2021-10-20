@@ -14,7 +14,9 @@ class ProgramFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name,
+            'name_ru' => $this->faker->name,
+            'name_uz' => $this->faker->name,
+            'name_oz' => $this->faker->name,
             'image' => $this->faker->name,
             'parent_id' => $this->faker->numberBetween($min = 1, $max = 2)
         ];

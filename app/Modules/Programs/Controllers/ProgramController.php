@@ -115,10 +115,20 @@ class ProgramController extends BaseApiController
      *           @OA\Schema(
      *               type="object",
      *               @OA\Property(
-     *                   property="name",
-     *                   description="name",
-     *                   type="string"
-     *               ),
+     *                     property="name_ru",
+       *                   description="name_ru",
+       *                   type="string"
+       *               ),
+       *               @OA\Property(
+       *                   property="name_uz",
+       *                   description="name_uz",
+       *                   type="string"
+       *               ),
+       *               @OA\Property(
+       *                   property="name_oz",
+       *                   description="name_oz",
+       *                   type="string"
+       *               ),
      *               @OA\Property(
      *                   property="parent_id",
      *                   description="parent_id",
@@ -139,7 +149,7 @@ class ProgramController extends BaseApiController
 
     public function store(ProgramRequest $request){
         $model = $this->programWriteRepositoryInterface->create(new CreateProgramDTO(
-            $request->get('name'), $request->get('parent_id')
+            $request->get('name_ru'), $request->get('name_uz'), $request->get('name_oz'), $request->get('image'), $request->get('parent_id')
         ));
         if(!$model){
            return $this->responseWithMessage(500);
@@ -165,8 +175,18 @@ class ProgramController extends BaseApiController
        *           @OA\Schema(
        *               type="object",
        *               @OA\Property(
-       *                   property="name",
-       *                   description="name",
+       *                   property="name_ru",
+       *                   description="name_ru",
+       *                   type="string"
+       *               ),
+       *               @OA\Property(
+       *                   property="name_uz",
+       *                   description="name_uz",
+       *                   type="string"
+       *               ),
+       *               @OA\Property(
+       *                   property="name_oz",
+       *                   description="name_oz",
        *                   type="string"
        *               ),
        *               @OA\Property(
@@ -198,7 +218,7 @@ class ProgramController extends BaseApiController
 
     public function update($id, ProgramRequest $request){
         $model = $this->programWriteRepositoryInterface->update($id, new UpdateProgramDTO(
-            $request->get('name'), $request->get('parent_id')
+            $request->get('name_ru'), $request->get('name_uz'),  $request->get('image'), $request->get('name_oz'), $request->get('parent_id')
         ));
         if(!$model){
            return $this->responseWithMessage(500);

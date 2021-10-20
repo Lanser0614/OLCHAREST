@@ -16,7 +16,9 @@ class ProgramResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
+            'name_ru' => $this->name_ru,
+            'name_uz' => $this->name_uz,
+            'name_oz' => $this->name_oz,
             'image' => $this->image,
             'parent_id' => $this->parent_id,
             'children' => ProgramResource::collection($this->whenLoaded('childrenCategories'))

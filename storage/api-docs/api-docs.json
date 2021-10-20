@@ -1731,8 +1731,16 @@
                         "application/json": {
                             "schema": {
                                 "properties": {
-                                    "name": {
-                                        "description": "name",
+                                    "name_ru": {
+                                        "description": "name_ru",
+                                        "type": "string"
+                                    },
+                                    "name_uz": {
+                                        "description": "name_uz",
+                                        "type": "string"
+                                    },
+                                    "name_oz": {
+                                        "description": "name_oz",
                                         "type": "string"
                                     },
                                     "parent_id": {
@@ -1815,8 +1823,16 @@
                         "application/x-www-form-urlencoded": {
                             "schema": {
                                 "properties": {
-                                    "name": {
-                                        "description": "name",
+                                    "name_ru": {
+                                        "description": "name_ru",
+                                        "type": "string"
+                                    },
+                                    "name_uz": {
+                                        "description": "name_uz",
+                                        "type": "string"
+                                    },
+                                    "name_oz": {
+                                        "description": "name_oz",
                                         "type": "string"
                                     },
                                     "parent_id": {

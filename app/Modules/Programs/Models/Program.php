@@ -18,7 +18,7 @@ class Program extends Model
 
     protected $table = 'programs_table';
 
-    protected $fillable = ['name', 'parent_id'];
+    protected $fillable = ['name', 'parent_id', 'name_ru', 'name_uz', 'name_oz'];
     
     protected $hidden = ['parent_id'];
 
