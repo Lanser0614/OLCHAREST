@@ -15,7 +15,7 @@ class ProgramReadRepository implements ProgramReadRepositoryInterface
 
     public function getProgram()
     {
-      return $this->model::with('childrenCategories')->get();
+      return $this->model::with('childrenCategories')->whereNull('parent_id')->get();
     }
 
 
