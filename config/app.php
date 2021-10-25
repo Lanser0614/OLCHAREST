@@ -2,6 +2,7 @@
 
 
 use App\Modules\OlchaCategories\Providers\OlchaCategoriesServiceProvider;
+use App\Modules\computerPeripherals\Providers\computerPeripheralsServiceProvider;
 
 return [
 
@@ -197,8 +198,7 @@ return [
         OlchaCategoriesServiceProvider::class,
         \App\Modules\EmailFeedback\Providers\EmailFeedbackServiceProvider::class,
         \App\Modules\ComputerImage\Providers\ComputerImageServiceProvider::class,
-
-
+        \App\Modules\computerPeripherals\Providers\computerPeripheralsServiceProvider::class,
     ],
 
     /*
