@@ -20,7 +20,7 @@ class CategoryForComputerRepository implements CategoryForComputerRepositoryInte
 
     public function getByCategoryId($id)
     {
-        return $this->model::find($id);
+        return $this->model::where('category_id', '=', $id)->with('category')->with('products.product')->get();
     }
     
 }

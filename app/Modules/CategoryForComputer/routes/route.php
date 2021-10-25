@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::group(['prefix' => 'CategoryForComputer', 'as' => 'CategoryForComputer-v1'], function () {
+Route::group(['prefix' => 'components', 'as' => 'components-v1'], function () {
     Route::get('/', 'CategoryForComputerController@index');
     Route::post('/', 'CategoryForComputerController@store');
     Route::get('/{id?}', 'CategoryForComputerController@show');

@@ -15,9 +15,12 @@ class computerPeripherals extends Migration
     {
         Schema::create('computer_peripherals', function (Blueprint $table) {
             $table->id();
+            $table->string('category_id')->nullable();
             $table->integer('product_id')->nullable();
             $table->string('image')->nullable();
-            $table->text('description')->nullable();
+            $table->text('description_uz')->nullable();
+            $table->text('description_oz')->nullable();
+            $table->text('description_ru')->nullable();
             $table->integer('parent_id')->nullable();
             $table->timestamps();
         });

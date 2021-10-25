@@ -13,7 +13,8 @@ class computerPeripheralsReadRepository implements computerPeripheralsReedReposi
         $this->model = $model;
     }
     public function getcomputerPeripherals(){
-        return $this->model::with('childrenCategories')->whereNull('parent_id')->get();
+        return $this->model::with(['category.category', 'products'])->get();
+      //  return $this->model::with('childrenCategories')->whereNull('parent_id')->get();
     }
 
     public function getcomputerPeripheralsById($id){

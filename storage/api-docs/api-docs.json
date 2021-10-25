@@ -400,10 +400,10 @@
                 ]
             }
         },
-        "/api/v1/CategoryForComputer": {
+        "/api/v1/components": {
             "get": {
                 "tags": [
-                    "CategoryForComputer"
+                    "components"
                 ],
                 "summary": "Get a list of Category for Computer",
                 "description": "",
@@ -421,9 +421,9 @@
             },
             "post": {
                 "tags": [
-                    "CategoryForComputer"
+                    "components"
                 ],
-                "summary": "Create new category",
+                "summary": "Create new category for components",
                 "description": "",
                 "operationId": "store",
                 "requestBody": {
@@ -457,10 +457,10 @@
                 ]
             }
         },
-        "/api/v1/CategoryForComputer/{id}": {
+        "/api/v1/components/{id}": {
             "get": {
                 "tags": [
-                    "CategoryForComputer"
+                    "components"
                 ],
                 "summary": "Get one Category For Computer with all atributes",
                 "description": "",
@@ -489,9 +489,9 @@
             },
             "put": {
                 "tags": [
-                    "CategoryForComputer"
+                    "components"
                 ],
-                "summary": "Updates a Category For Computer in the store with form data",
+                "summary": "Updates a Category For Computer components in the store with form data",
                 "description": "",
                 "operationId": "update",
                 "parameters": [

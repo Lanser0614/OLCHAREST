@@ -38,7 +38,7 @@ class computerPeripheralsController extends BaseApiController
      public function index()
     {
         $model = $this->computerPeripheralsRead->getcomputerPeripherals();
-        //return $model; 
+      // return $model; 
         return computerPeripheralsResource::collection($model);
     }
 

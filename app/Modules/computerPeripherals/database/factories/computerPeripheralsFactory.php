@@ -29,7 +29,9 @@ class computerPeripheralsFactory extends Factory
         return [
             'product_id' => $this->faker->numberBetween($min = 600, $max = 800),
             'image' => $this->faker->name(),
-            'description' => $this->faker->text(),
+            'description_uz' => $this->faker->text(),
+            'description_oz' => $this->faker->text(),
+            'description_ru' => $this->faker->text(),
             'parent_id' => $this->faker->numberBetween($min = 1, $max = 5),
         ];
     }

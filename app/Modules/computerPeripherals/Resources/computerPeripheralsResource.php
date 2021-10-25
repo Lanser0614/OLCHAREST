@@ -3,6 +3,9 @@
 namespace App\Modules\computerPeripherals\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Modules\ProductForComputer\Resources\ProductForComputer;
+use App\Modules\CategoryForComputer\Resources\CategoryForComputerResource;
+use App\Modules\OlchaProducts\Resources\ProductResource;
 
 class computerPeripheralsResource extends JsonResource
 {
@@ -15,7 +18,9 @@ class computerPeripheralsResource extends JsonResource
             'image' => $this->image,
             'description' => $this->description,
             'parent_id' => $this->parent_id,
-            'children' => computerPeripheralsResource::collection($this->whenLoaded('childrenCategories'))
+            'category_id' => $this->category_id,
+            'Category' => new CategoryForComputerResource($this->whenLoaded('category')),
+            'products' => new ProductResource($this->whenLoaded('products'))
         ];
     }
     

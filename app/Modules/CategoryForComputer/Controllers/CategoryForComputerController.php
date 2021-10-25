@@ -25,8 +25,8 @@ class CategoryForComputerController extends BaseApiController
 
 
      /**
-     * @OA\Get(path="/api/v1/CategoryForComputer",
-     *   tags={"CategoryForComputer"},
+     * @OA\Get(path="/api/v1/components",
+     *   tags={"components"},
      *   security={
      *     {"bearerAuth": {}}
      *   },
@@ -50,8 +50,8 @@ class CategoryForComputerController extends BaseApiController
 
 
     /**
-     * @OA\Get(path="/api/v1/CategoryForComputer/{id}",
-     *   tags={"CategoryForComputer"},
+     * @OA\Get(path="/api/v1/components/{id}",
+     *   tags={"components"},
      *   security={
      *     {"bearerAuth": {}}
      *   },
@@ -81,19 +81,19 @@ class CategoryForComputerController extends BaseApiController
         if(empty($model)){
             return $this->responseWithMessage(Response::HTTP_NOT_FOUND);
         }
-        return $this->responseWithData(new CategoryForComputerResource($model));
+        return $this->responseWithData(CategoryForComputerResource::collection($model));
     }
 
 
 
     /**
      * @OA\Post(
-     *   path="/api/v1/CategoryForComputer",
-     *   tags={"CategoryForComputer"},
+     *   path="/api/v1/components",
+     *   tags={"components"},
      *   security={
      *     {"bearerAuth": {}}
      *   },
-     *   summary="Create new category",
+     *   summary="Create new category for components",
      *   description="",
      *   operationId="store",
      *   @OA\RequestBody(
@@ -135,12 +135,12 @@ class CategoryForComputerController extends BaseApiController
 
 /**
        * @OA\Put(
-       *   path="/api/v1/CategoryForComputer/{id}",
-       *   tags={"CategoryForComputer"},
+       *   path="/api/v1/components/{id}",
+       *   tags={"components"},
        *   security={
        *     {"bearerAuth": {}}
        *   },
-       *   summary="Updates a Category For Computer in the store with form data",
+       *   summary="Updates a Category For Computer components in the store with form data",
        *   description="",
        *   operationId="update",
        *   @OA\RequestBody(

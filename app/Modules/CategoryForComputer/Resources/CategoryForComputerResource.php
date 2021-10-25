@@ -3,6 +3,7 @@
 namespace App\Modules\CategoryForComputer\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Modules\ProductForComputer\Resources\ProductForComputer;
 
 class CategoryForComputerResource extends JsonResource
 {
@@ -17,7 +18,12 @@ class CategoryForComputerResource extends JsonResource
         return  [
             'id' => $this->id,
             'category_id' => $this->category_id,
-            'category' => $this->category->name_uz,
+            'category_uz' => $this->category->name_uz,
+            'category_oz' => $this->category->name_oz,
+            'category_ru' => $this->category->name_ru,
+            'alias' => $this->category->alias,
+            'image' => $this->icon,
+            'product' => ProductForComputer::collection($this->whenLoaded('products'))
         ];
     }
 }
