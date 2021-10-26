@@ -2004,26 +2004,6 @@
                     }
                 ]
             }
-        },
-        "/api/v1/computerPeripherals": {
-            "get": {
-                "tags": [
-                    "computerPeripherals"
-                ],
-                "summary": "Get a list of Programs with parent",
-                "description": "",
-                "operationId": "index",
-                "responses": {
-                    "200": {
-                        "description": "success"
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            }
         }
     },
     "components": {

@@ -17,22 +17,7 @@ class computerPeripheralsController extends BaseApiController
     }
 
 
-     /**
-     * @OA\Get(path="/api/v1/computerPeripherals",
-     *   tags={"computerPeripherals"},
-     *   security={
-     *     {"bearerAuth": {}}
-     *   },
-     *   summary="Get a list of Programs with parent",
-     *   description="",
-     *   operationId="index",
-     *   @OA\Response(
-     *     response=200,
-     *     description="success",
-     *     @OA\Schema(type="string"),
-     *   ),
-     * )
-     */
+     
 
 
      public function index()
