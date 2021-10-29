@@ -15,13 +15,13 @@ class ProgramReadRepository implements ProgramReadRepositoryInterface
 
     public function getProgram()
     {
-      return $this->model::with('childrenCategories')->whereNull('parent_id')->get();
+      return $this->model::with('childrenCategories.childrenCategories')->whereNull('parent_id')->get();
     }
 
 
     public function getProgramBytId($id)
     {
-      return  $this->model::where('id', '=', $id)->with('childrenCategories')->first();
+      return  $this->model::where('id', '=', $id)->with('childrenCategories.childrenCategories')->whereNull('parent_id')->get();
     }
 
     public function getByIdProgram($id){

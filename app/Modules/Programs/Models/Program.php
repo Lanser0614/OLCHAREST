@@ -20,7 +20,7 @@ class Program extends Model
 
     protected $fillable = ['name', 'parent_id', 'name_ru', 'name_uz', 'name_oz'];
     
-    protected $hidden = ['parent_id'];
+   // protected $hidden = ['parent_id'];
 
     public function childCategories()
     {

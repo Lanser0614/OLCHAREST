@@ -6,6 +6,7 @@ use Illuminate\Http\Response;
 use App\Http\Controllers\BaseApiController;
 use App\Modules\Programs\DTO\CreateProgramDTO;
 use App\Modules\Programs\DTO\UpdateProgramDTO;
+use App\Modules\Programs\Models\Program;
 use App\Modules\Programs\Requests\ProgramRequest;
 use App\Modules\Programs\Resources\ProgramResource;
 use App\Modules\Programs\Repository\ProgramReadRepositoryInterface;
@@ -43,9 +44,14 @@ class ProgramController extends BaseApiController
 
 
     public function index(){
-        $model = $this->programReadRepository->getProgram();
+    //     $model = $this->programReadRepository->getProgram();
+    //   return $model;
+  
+    $model = Program::with('childrenCategories')->whereNull('parent_id')->get();
+  return $model;
+   // dd($model);
         // return $this->responseWithData(ProgramResource::collection($model));
-        return response()->json(['Program' => ProgramResource::collection($model)]);
+     //  return response()->json(['Program' => ProgramResource::collection($model)]);
     }
 
 
