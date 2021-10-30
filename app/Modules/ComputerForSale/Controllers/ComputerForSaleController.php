@@ -9,6 +9,7 @@ use App\Modules\ComputerForSale\DTO\UpdateComputerSale;
 use App\Modules\ComputerForSale\Resources\ComputerForSale;
 use App\Modules\ComputerForSale\Resources\ComputerForSaleAll;
 use App\Modules\ComputerForSale\Requests\ComputerForSaleRequest;
+use App\Modules\ComputerForSale\Requests\ComputerForSaleUpdateRequest;
 use App\Modules\ProductForComputer\Resources\ProductForComputerResource;
 use App\Modules\ComputerForSale\Repository\ComputerForSaleRepositoryInterface;
 use App\Modules\ComputerForSale\Repository\ComputerForSaleWriteRepositoryInterface;
@@ -122,7 +123,7 @@ class ComputerForSaleController extends BaseApiController
     public function store(ComputerForSaleRequest $request){
 
         $model = $this->computerForSaleWrite->create(new CreateComputerSale(
-           $request->get('computer_id'), $request->get('product_id')
+           $request->get('computer_id'), $request->get('product_id'), $request->get('category_id')
         ));
         if(empty($model)){
             return $this->responseWithMessage(500);
@@ -182,10 +183,10 @@ class ComputerForSaleController extends BaseApiController
        */
   
   
-      public function update($id, ComputerForSaleRequest $request){
+      public function update($computer_id, $category_id, ComputerForSaleUpdateRequest $request){
   
-          $model = $this->computerForSaleWrite->update($id, new UpdateComputerSale(
-             $request->get('computer_id'), $request->get('product_id')
+          $model = $this->computerForSaleWrite->update($computer_id, $category_id, new UpdateComputerSale(
+             $request->get('computer_id'), $request->get('product_id'), $request->get('category_id')
           ));
           if(empty($model)){
               return $this->responseWithMessage(500);

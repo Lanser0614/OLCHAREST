@@ -25,9 +25,9 @@ class ComputerForSaleWriteRepository implements ComputerForSaleWriteRepositoryIn
     }
 
 
-    public function update($id, UpdateComputerSale $DTO){
+    public function update($computer_id, $category_id, UpdateComputerSale $DTO){
 
-        $model = $this->model::where('id', '=', $id)->first();
+        $model = $this->model::where('computer_id', '=', $computer_id)->where('category_id', '=', $category_id)->first();
         $model->update(get_object_vars($DTO));
         return $model;
 

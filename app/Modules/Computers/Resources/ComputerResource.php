@@ -27,7 +27,7 @@ class ComputerResource extends JsonResource
             'image' => $this->image,
             'products' => ComputerForSale::collection($this->whenLoaded('product')),
             'program' => ComputerProgramResource::collection($this->whenLoaded('program')),
-            'monofacture_id' => new ComputerMonofakturaResource($this->whenLoaded('manufactory'))
+           // 'monofacture_id' => new ComputerMonofakturaResource($this->whenLoaded('manufactory'))
           
         ];
     }

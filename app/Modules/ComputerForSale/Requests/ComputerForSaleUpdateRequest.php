@@ -1,16 +1,12 @@
 <?php
 
-
-
 namespace App\Modules\ComputerForSale\Requests;
-
 
 use Illuminate\Foundation\Http\FormRequest;
 
-
-class ComputerForSaleRequest extends FormRequest
+class ComputerForSaleUpdateRequest extends FormRequest
 {
-    /**
+        /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool

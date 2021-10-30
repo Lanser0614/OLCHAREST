@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Request;
 use App\Http\Controllers\BaseApiController;
 use App\Modules\Computers\DTO\CreateComputer;
 use App\Modules\Computers\DTO\UpdateComputer;
+use App\Modules\Computers\Models\Computer;
 use App\Modules\Computers\Requests\ComputerRequest;
 use App\Modules\Computers\Resources\ComputerResource;
 use App\Modules\Computers\Resources\ComputerResourceAll;
@@ -120,7 +121,12 @@ class ComputerController extends BaseApiController
 
 
     public function slug(string $slug){
-        $model = $this->computerReedRepository->getBySlug($slug);
+      
+      // return response()->json($model->product);
+
+       //var_dump($model);
+      // return $model;
+           $model = $this->computerReedRepository->getBySlug($slug);
         if(empty($model)){
             return $this->responseWithMessage(Response::HTTP_NOT_FOUND);
         }

@@ -22,6 +22,7 @@ class ComputerForSaleAll extends JsonResource
             'product_id' => $this->product_id,
             'computer_id' => $this->computer_id,
             'computer' =>$this->computer->name,
+            'category_id' => $this->category_id,
             'product'=> ProductForComputer::collection($this->whenLoaded('product')),
         ];
     }

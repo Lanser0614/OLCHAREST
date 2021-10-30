@@ -17,7 +17,7 @@ class RelatedProductResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'product_id' => $this->product_id,
+        //    'product_id' => $this->product_id,
         //    'related_product_id' => $this->related_product_id,
             'related_product' => (new ProductForComputer($this->whenLoaded('mainProduct'))),
         //   'related_product'=> (ProductForComputer::collection($this->whenLoaded('product'))),

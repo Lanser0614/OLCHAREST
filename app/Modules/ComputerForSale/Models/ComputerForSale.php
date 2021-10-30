@@ -15,7 +15,7 @@ class ComputerForSale extends Model
 
     protected $table = 'computer_for_sale';
 
-    protected $fillable = ['product_id', 'computer_id'];
+    protected $fillable = ['product_id', 'computer_id', 'category_id'];
 
 
 

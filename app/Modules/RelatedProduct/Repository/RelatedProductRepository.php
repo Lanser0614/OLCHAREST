@@ -24,10 +24,10 @@ class RelatedProductRepository implements RelatedProductRepositoryInterface
 //   return $model;
     }
 
-    public function getRelatedByProductId($id)
+    public function getRelatedByProductId($computer_id, $category_id)
     {
-       // return $this->model::with('product.product.category')->where('product_id', '=', $id)->get();
-       return $this->model::with('mainProduct.product.category')->where('product_id', '=', $id)->get();
+     return $this->model::with('mainProduct.product.category')->where('computer_id', '=', $computer_id)->where('cat_id', '=', $category_id)->get();
+       //return $this->model::with('mainProduct.product.category')->where('product_id', '=', $id)->get();
     }
 
 

@@ -78,8 +78,9 @@ class RelatedProductController extends BaseApiController
      * @return \Illuminate\Http\JsonResponse
      */
 
-    public function show($id){
-        $model = $this->relatedProduct->getRelatedByProductId($id);
+    public function show($computer_id, $category_id){
+        
+        $model = $this->relatedProduct->getRelatedByProductId($computer_id, $category_id);
       //  return json_decode($model);
      // return $model;
         return $this->responseWithData(RelatedProductResource::collection($model));

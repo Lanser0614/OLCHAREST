@@ -9,5 +9,5 @@ interface ComputerForSaleWriteRepositoryInterface
 {
     public function create(CreateComputerSale $DTO);
 
-    public function update($id, UpdateComputerSale $DTO);
+    public function update($computer_id, $category_id, UpdateComputerSale $DTO);
 }
