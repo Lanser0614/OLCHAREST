@@ -3,14 +3,19 @@
 namespace App\Modules\CategoryForComputer\Controllers;
 
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\BaseApiController;
+use App\Modules\CategoryForComputer\Models\CategoryForComputer;
 use App\Modules\CategoryForComputer\DTO\CreateCategoryForComputerDTO;
 use App\Modules\CategoryForComputer\DTO\UpdateCategoryForComputerDTO;
 use App\Modules\CategoryForComputer\Requests\UpdateForComputerRequest;
 use App\Modules\CategoryForComputer\Requests\CategoryForComputerRequest;
 use App\Modules\CategoryForComputer\Resources\CategoryForComputerResource;
+use App\Modules\CategoryForComputer\Resources\CategoryForComputerProductResource;
 use App\Modules\CategoryForComputer\Repository\CategoryForComputerRepositoryInterface;
 use App\Modules\CategoryForComputer\Repository\CategoryForComputerWriteRepositoryInterface;
+use App\Modules\OlchaProducts\Models\OlchaProduct;
+use App\Modules\OlchaProducts\Resources\ProductResource;
 
 class CategoryForComputerController extends BaseApiController
 {
@@ -85,6 +90,84 @@ class CategoryForComputerController extends BaseApiController
     }
 
 
+
+    /**
+     * @OA\Get(path="/api/v1/components/{alias}",
+     *   tags={"components"},
+     *   security={
+     *     {"bearerAuth": {}}
+     *   },
+     *   summary="Get one Category For Computer with all atributes By Alias",
+     *   description="",
+     *   operationId="ByAlias",
+     *     @OA\Parameter(
+     *         name="slug",
+     *         in="path",
+     *         description="Alias",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="string",
+     *         ),
+     *     ),
+     *   @OA\Response(
+     *     response=200,
+     *     description="successful operation",
+     *   ),
+     * )
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+
+
+    public function ByAlias(string $slug){
+       // dd($slug);
+        $alias = DB::table('category_for_computer')
+        ->leftJoin('categories','categories.id','=','category_for_computer.category_id')
+        ->select('category_for_computer.category_id','categories.id','categories.alias')->where('categories.alias', 'LIKE', "{$slug}")
+        ->get();
+
+        foreach ($alias as  $value) {
+      
+        }
+       // dd($value->id);
+        $model = $this->categoryForComputerRead->getByCategoryId($value->id);
+        if(empty($model)){
+            return $this->responseWithMessage(Response::HTTP_NOT_FOUND);
+        }
+        return $this->responseWithData(CategoryForComputerResource::collection($model));
+     
+    }
+
+    
+
+
+    public function byAliasProduct($slug, $product_slug){
+
+        $alias = DB::table('category_for_computer')
+        ->leftJoin('categories','categories.id','=','category_for_computer.category_id')
+        ->select('category_for_computer.category_id','categories.id','categories.alias')->where('categories.alias', 'LIKE', "{$slug}")
+        ->get();
+
+        foreach ($alias as  $value) {
+      
+        }
+        $id = $value->id;
+        $product = DB::table('products')
+        ->Join('product_for_computer',function($join) use($id, $product_slug){
+                            $join->on('product_for_computer.product_id','=','products.id')
+                                ->where('product_for_computer.cat_id','=',$id);
+                        })->where('products.alias', 'LIKE', "{$product_slug}")
+        ->select('product_for_computer.product_id','products.id','products.alias')
+        ->get();
+        foreach ($product as $key) {
+               // dd($key);
+        }
+        $product_id = $key->product_id;
+     //   return $this->responseWithData(new CategoryForComputerProductResource($product_id));
+        $product_info = OlchaProduct::find($product_id);
+        return new ProductResource($product_info);
+     
+    }
 
     /**
      * @OA\Post(

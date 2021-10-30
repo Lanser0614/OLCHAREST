@@ -537,6 +537,37 @@
                 ]
             }
         },
+        "/api/v1/components/{alias}": {
+            "get": {
+                "tags": [
+                    "components"
+                ],
+                "summary": "Get one Category For Computer with all atributes By Alias",
+                "description": "",
+                "operationId": "ByAlias",
+                "parameters": [
+                    {
+                        "name": "slug",
+                        "in": "path",
+                        "description": "Alias",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
         "/api/v1/ComputerForProgram": {
             "get": {
                 "tags": [
