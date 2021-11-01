@@ -134,7 +134,10 @@ class CategoryForComputerController extends BaseApiController
         if(empty($model)){
             return $this->responseWithMessage(Response::HTTP_NOT_FOUND);
         }
-        return $this->responseWithData(CategoryForComputerResource::collection($model));
+        foreach ($model as $key ) {
+            # code...
+        }
+        return $this->responseWithData(new CategoryForComputerResource($key));
      
     }
 
