@@ -18,7 +18,8 @@ class CategoryForComputerRepository implements CategoryForComputerRepositoryInte
 
     public function getCategory()
     {
-       return $this->model::with('category')->with('products.product')->get();
+      return $this->model::with('category')->with('products.product')->get();
+    //   return $this->model::with(['category', 'products.product'])->get();
     }
 
     public function getCategoryAlias(string $slug) 
@@ -27,15 +28,14 @@ class CategoryForComputerRepository implements CategoryForComputerRepositoryInte
         $alias = $this->model->DB::table('category_for_computer')
         ->leftJoin('categories','categories.id','=','category_for_computer.category_id')
         ->select('category_for_computer.category_id','categories.id','categories.alias')
-        ->get();
+        ->paginate();
 
         
     }
 
     public function getByCategoryId($id)
     {
-        return $this->model::where('category_id', '=', $id)->with('category')->with('products.product')->get();
-      //  return $this->model::where('alias', '=', $id)->with('category')->with('products.product')->get();
+        return $this->model::where('category_id', '=', $id)->with('products.product')->paginate(1);
     }
     
 }

@@ -48,8 +48,9 @@ class CategoryForComputerController extends BaseApiController
 
     public function index(): \Illuminate\Http\JsonResponse
     {
+        // $model = $this->categoryForComputerRead->getCategory();
+        // return CategoryForComputerResource::collection($model);
         return $this->responseWithData(CategoryForComputerResource::collection($this->categoryForComputerRead->getCategory()));
-      
     }
 
 
@@ -129,17 +130,27 @@ class CategoryForComputerController extends BaseApiController
         foreach ($alias as  $value) {
       
         }
+
+      $model =  DB::table('product_for_computer')
+    ->Join('products',function($join) use($value){
+                        $join->on('products.id','=','product_for_computer.product_id')
+                            ->where('product_for_computer.cat_id',"{$value->id}");
+                    })->select('products.name_uz','products.name_oz','products.name_ru','products.description_uz','products.description_oz','products.description_ru','products.alias','products.images','products.price','products.quantity','products.category_id')
+                    ->paginate(20);
        // dd($value->id);
-        $model = $this->categoryForComputerRead->getByCategoryId($value->id);
-        if(empty($model)){
-            return $this->responseWithMessage(Response::HTTP_NOT_FOUND);
-        }
-        foreach ($model as $key ) {
-            # code...
-        }
-        return $this->responseWithData(new CategoryForComputerResource($key));
+        //$model = $this->categoryForComputerRead->getByCategoryId($value->id);
+        // if(empty($model)){
+        //     return $this->responseWithMessage(Response::HTTP_NOT_FOUND);
+        // }
+        // foreach ($model as $key ) {
+            
+        // }
+
+        return  $model;
      
     }
+
+    
 
     
 

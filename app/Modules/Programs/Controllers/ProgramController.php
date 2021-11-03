@@ -47,11 +47,9 @@ class ProgramController extends BaseApiController
     //     $model = $this->programReadRepository->getProgram();
     //   return $model;
   
-    $model = Program::with('childrenCategories')->whereNull('parent_id')->get();
-  return $model;
-   // dd($model);
-        // return $this->responseWithData(ProgramResource::collection($model));
-     //  return response()->json(['Program' => ProgramResource::collection($model)]);
+    $model = Program::with('childrenCategories.childrenCategories')->whereNull('parent_id')->paginate(1);
+    
+      return  ProgramResource::collection($model);
     }
 
 

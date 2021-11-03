@@ -46,11 +46,13 @@ class ComputerController extends BaseApiController
      */
 
 
-    public function index(): \Illuminate\Http\JsonResponse
+    public function index()//: \Illuminate\Http\JsonResponse
     {
 
         $model = $this->computerReedRepository->getcomputers();
-        return response()->json(['computers' => ComputerResourceAll::collection($model)]);
+       // return $model;
+     //  return response()->json(['computers' => ComputerResourceAll::collection($model)]);
+    return ComputerResourceAll::collection($model);
     }
     /**
      * @OA\Get(path="/api/v1/computers/{id}",

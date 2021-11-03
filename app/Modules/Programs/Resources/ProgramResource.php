@@ -6,6 +6,8 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class ProgramResource extends JsonResource
 {
+
+   
     /**
      * Transform the resource into an array.
      *
@@ -21,7 +23,7 @@ class ProgramResource extends JsonResource
             'name_oz' => $this->name_oz,
             'image' => $this->image,
             'parent_id' => $this->parent_id,
-            'children' => ProgramResource::collection($this->whenLoaded('childrenCategories'))
+            'children' => ProgramResource::collection($this->whenLoaded('childrenCategories')),
         ];
     }
 }

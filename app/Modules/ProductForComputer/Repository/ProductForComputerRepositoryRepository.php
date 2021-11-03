@@ -16,7 +16,7 @@ class ProductForComputerRepositoryRepository implements ProductForComputerReposi
 
     public function getProducts()
     {
-       return $this->model::with('product.category')->get();
+       return $this->model::with('product.category')->paginate(3);
 
     }
 

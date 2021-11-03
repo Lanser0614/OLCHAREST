@@ -16,7 +16,7 @@ class ComputerReedRepository implements ComputerReedRepositoryInterface
 
     public function getComputers()
     {
-      return  $this->model::with(['product.product.product.category', 'program.program', 'manufactory', 'ComputerImages'])->get();
+      return  $this->model::with(['product.product.product.category', 'program.program',  'ComputerImages'])->paginate();
     }
 
     public function getComputersById($id)
