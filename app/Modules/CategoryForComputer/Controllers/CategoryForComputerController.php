@@ -4,11 +4,14 @@ namespace App\Modules\CategoryForComputer\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
+// use Illuminate\Support\Collection;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Database\Eloquent\Model;
 use Symfony\Component\Console\Input\Input;
 use App\Http\Controllers\BaseApiController;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\AbstractPaginator;
 use Illuminate\Pagination\LengthAwarePaginator;
 use App\Modules\OlchaProducts\Models\OlchaProduct;
 use App\Modules\OlchaProducts\Resources\ProductResource;
@@ -21,6 +24,7 @@ use App\Modules\CategoryForComputer\Resources\CategoryForComputerResource;
 use App\Modules\CategoryForComputer\Resources\CategoryForComputerProductResource;
 use App\Modules\CategoryForComputer\Repository\CategoryForComputerRepositoryInterface;
 use App\Modules\CategoryForComputer\Repository\CategoryForComputerWriteRepositoryInterface;
+
 //use Illuminate\Support\Facades\Request;
 
 class CategoryForComputerController extends BaseApiController
@@ -126,18 +130,54 @@ class CategoryForComputerController extends BaseApiController
      */
 
 
-    public function ByAlias(string $slug){
+    public function ByAlias(string $slug, Request $request){
        
-        $model = $this->categoryForComputerRead->ByAlias($slug);
-       // $collection =  Collection::make($model);
-    
+    //     $model = $this->categoryForComputerRead->ByAlias($slug);
+    //    return new CategoryForComputerProductResource($model);
+     $alias = DB::table('category_for_computer')
+      ->leftJoin('categories','categories.id','=','category_for_computer.category_id')
+      ->select('category_for_computer.category_id','categories.id','categories.alias')->where('categories.alias', 'LIKE', "{$slug}")
+      ->get();
 
-        return $model;
-     
+      foreach ($alias as  $value) {
+    
+      }
+
+    $query =  DB::table('product_for_computer')
+  ->Join('products',function($join) use($value){
+                      $join->on('products.id','=','product_for_computer.product_id')
+                          ->where('product_for_computer.cat_id',"{$value->id}");
+                  })->select('products.name_uz','products.name_oz','products.name_ru','products.description_uz','products.description_oz','products.description_ru','products.alias','products.images','products.price','products.quantity','products.category_id')
+                  ->get();
+
+            
+                  
+                  $perPage = 10;
+                  $page = $request->input('page', 1);
+                  $total = $query->count();
+                  $path = $request->url();
+                 $results = $query->skip(($page - 1) * $perPage)->take($perPage);
+        
+        return ['Components' => $results,
+                 'Paginator' => 
+                  [
+                     'Total' => $total,
+                     'Current page' => $page,
+                     'PerPage' => $perPage,
+                     'path'  => $path,
+                      'last_page' => ceil($total / $perPage)
+                     
+                     ]
+                    ];
     }
 
     
-
+    public function paginate($items, $perPage = 5, $page = null, $options = [])
+    {
+        // $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
+        // $items = $items instanceof Collection ? $items : Collection::make($items);
+        return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
+    }
     
 
 

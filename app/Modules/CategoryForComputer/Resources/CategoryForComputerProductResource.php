@@ -15,9 +15,10 @@ class CategoryForComputerProductResource extends JsonResource
      */
     public function toArray($request)
     {
-        return  [
+      return parent::toArray($request);
+        // return  [
             
-          //  'product' => ProductForComputer::collection($this->whenLoaded('products'))
-        ];
+        //   //  'product' => ProductForComputer::collection($this->whenLoaded('products'))
+        // ];
     }
 }
