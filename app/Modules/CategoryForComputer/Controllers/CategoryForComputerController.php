@@ -2,9 +2,16 @@
 
 namespace App\Modules\CategoryForComputer\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Pagination\Paginator;
+use Symfony\Component\Console\Input\Input;
 use App\Http\Controllers\BaseApiController;
+use Illuminate\Pagination\LengthAwarePaginator;
+use App\Modules\OlchaProducts\Models\OlchaProduct;
+use App\Modules\OlchaProducts\Resources\ProductResource;
 use App\Modules\CategoryForComputer\Models\CategoryForComputer;
 use App\Modules\CategoryForComputer\DTO\CreateCategoryForComputerDTO;
 use App\Modules\CategoryForComputer\DTO\UpdateCategoryForComputerDTO;
@@ -14,8 +21,7 @@ use App\Modules\CategoryForComputer\Resources\CategoryForComputerResource;
 use App\Modules\CategoryForComputer\Resources\CategoryForComputerProductResource;
 use App\Modules\CategoryForComputer\Repository\CategoryForComputerRepositoryInterface;
 use App\Modules\CategoryForComputer\Repository\CategoryForComputerWriteRepositoryInterface;
-use App\Modules\OlchaProducts\Models\OlchaProduct;
-use App\Modules\OlchaProducts\Resources\ProductResource;
+//use Illuminate\Support\Facades\Request;
 
 class CategoryForComputerController extends BaseApiController
 {
@@ -46,11 +52,11 @@ class CategoryForComputerController extends BaseApiController
      * )
      */
 
-    public function index(): \Illuminate\Http\JsonResponse
+    public function index()//: \Illuminate\Http\JsonResponse
     {
-        // $model = $this->categoryForComputerRead->getCategory();
-        // return CategoryForComputerResource::collection($model);
-        return $this->responseWithData(CategoryForComputerResource::collection($this->categoryForComputerRead->getCategory()));
+         $model = $this->categoryForComputerRead->getCategory();
+        return CategoryForComputerResource::collection($model);
+      // return $this->responseWithData(CategoryForComputerResource::collection($this->categoryForComputerRead->getCategory()));
     }
 
 
@@ -121,32 +127,12 @@ class CategoryForComputerController extends BaseApiController
 
 
     public function ByAlias(string $slug){
-       // dd($slug);
-        $alias = DB::table('category_for_computer')
-        ->leftJoin('categories','categories.id','=','category_for_computer.category_id')
-        ->select('category_for_computer.category_id','categories.id','categories.alias')->where('categories.alias', 'LIKE', "{$slug}")
-        ->get();
+       
+        $model = $this->categoryForComputerRead->ByAlias($slug);
+       // $collection =  Collection::make($model);
+    
 
-        foreach ($alias as  $value) {
-      
-        }
-
-      $model =  DB::table('product_for_computer')
-    ->Join('products',function($join) use($value){
-                        $join->on('products.id','=','product_for_computer.product_id')
-                            ->where('product_for_computer.cat_id',"{$value->id}");
-                    })->select('products.name_uz','products.name_oz','products.name_ru','products.description_uz','products.description_oz','products.description_ru','products.alias','products.images','products.price','products.quantity','products.category_id')
-                    ->paginate(20);
-       // dd($value->id);
-        //$model = $this->categoryForComputerRead->getByCategoryId($value->id);
-        // if(empty($model)){
-        //     return $this->responseWithMessage(Response::HTTP_NOT_FOUND);
-        // }
-        // foreach ($model as $key ) {
-            
-        // }
-
-        return  $model;
+        return $model;
      
     }
 

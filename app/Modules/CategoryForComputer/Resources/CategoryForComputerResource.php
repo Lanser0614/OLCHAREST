@@ -16,6 +16,7 @@ class CategoryForComputerResource extends JsonResource
     public function toArray($request)
     {
         return  [
+          
             'id' => $this->id,
             'category_id' => $this->category_id,
             'category_uz' => $this->category->name_uz,
