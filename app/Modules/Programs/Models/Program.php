@@ -32,6 +32,10 @@ class Program extends Model
         return $this->hasMany(Program::class,'parent_id')->with('childCategories');
     }
 
+    // public function computer(){
+    //     return $this->belongsToMany();
+    // }
+
 
 
 }

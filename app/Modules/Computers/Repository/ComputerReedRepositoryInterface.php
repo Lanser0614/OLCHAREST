@@ -11,4 +11,6 @@ interface ComputerReedRepositoryInterface
     public function getComputersById($id);
 
     public function getBySlug(string $slug);
+
+    public function getBYProgramId($id);
 }

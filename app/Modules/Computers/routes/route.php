@@ -9,5 +9,5 @@ Route::group(['prefix' => 'computers', 'as' => 'computers-v1'], function ($route
     Route::put('/{id?}', 'ComputerController@update');
     Route::post('/', 'ComputerController@store');
     Route::get('/{slug}', 'ComputerController@slug');
-    // Route::get('/getBooksByAuthorId/{id?}', 'BookController@getBooksByAuthorId');
+    Route::get('/getComputerByProgramId/{program_id?}', 'ComputerController@getByProgramId');
 });

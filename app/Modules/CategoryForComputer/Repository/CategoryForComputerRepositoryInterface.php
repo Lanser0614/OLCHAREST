@@ -11,4 +11,6 @@ interface CategoryForComputerRepositoryInterface
         public function getCategoryAlias(string $slug);
 
         public function getByCategoryId($id);
+
+        
 }

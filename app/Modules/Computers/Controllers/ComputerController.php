@@ -305,4 +305,41 @@ class ComputerController extends BaseApiController
         return $this->responseWithData(new ComputerResource($model), Response::HTTP_CREATED);
        
     }
+
+
+
+
+    public function getByProgramId($program_id): \Illuminate\Http\JsonResponse
+    {
+        $model = $this->computerReedRepository->getBYProgramId($program_id);
+       // return $model;
+        return response()->json(['computers' =>  ComputerResourceAll::collection($model)]);
+    }
+
+    /**
+     * @OA\Get(path="/api/v1/computers/getComputerByProgramId/{program_id}",
+     *   tags={"computers"},
+     *   security={
+     *     {"bearerAuth": {}}
+     *   },
+     *   summary="Get one computers with all atributes",
+     *   description="",
+     *   operationId="getByProgramId",
+     *     @OA\Parameter(
+     *         name="program_id",
+     *         in="path",
+     *         description="Program id",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="string",
+     *         ),
+     *     ),
+     *   @OA\Response(
+     *     response=200,
+     *     description="successful operation",
+     *   ),
+     * )
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
 }

@@ -132,31 +132,13 @@ class CategoryForComputerController extends BaseApiController
 
     public function ByAlias(string $slug, Request $request){
        
-    //     $model = $this->categoryForComputerRead->ByAlias($slug);
-    //    return new CategoryForComputerProductResource($model);
-     $alias = DB::table('category_for_computer')
-      ->leftJoin('categories','categories.id','=','category_for_computer.category_id')
-      ->select('category_for_computer.category_id','categories.id','categories.alias')->where('categories.alias', 'LIKE', "{$slug}")
-      ->get();
-
-      foreach ($alias as  $value) {
-    
-      }
-
-    $query =  DB::table('product_for_computer')
-  ->Join('products',function($join) use($value){
-                      $join->on('products.id','=','product_for_computer.product_id')
-                          ->where('product_for_computer.cat_id',"{$value->id}");
-                  })->select('products.name_uz','products.name_oz','products.name_ru','products.description_uz','products.description_oz','products.description_ru','products.alias','products.images','products.price','products.quantity','products.category_id')
-                  ->get();
-
-            
-                  
+        $model = $this->categoryForComputerRead->ByAlias($slug);
+       //return new CategoryForComputerProductResource($model);
                   $perPage = 10;
                   $page = $request->input('page', 1);
-                  $total = $query->count();
+                  $total = $model->count();
                   $path = $request->url();
-                 $results = $query->skip(($page - 1) * $perPage)->take($perPage);
+                 $results = $model->skip(($page - 1) * $perPage)->take($perPage);
         
         return ['Components' => $results,
                  'Paginator' => 
@@ -172,13 +154,7 @@ class CategoryForComputerController extends BaseApiController
     }
 
     
-    public function paginate($items, $perPage = 5, $page = null, $options = [])
-    {
-        // $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
-        // $items = $items instanceof Collection ? $items : Collection::make($items);
-        return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
-    }
-    
+
 
 
     public function byAliasProduct($slug, $product_slug){

@@ -4,6 +4,7 @@ namespace App\Modules\Computers\Repository;
 
 use App\Modules\Computers\Models\Computer;
 use http\Env\Request;
+use Illuminate\Database\Eloquent\Builder;
 
 class ComputerReedRepository implements ComputerReedRepositoryInterface
 {
@@ -21,7 +22,7 @@ class ComputerReedRepository implements ComputerReedRepositoryInterface
 
     public function getComputersById($id)
     {
-        return $this->model::with(['product.product.product.category', 'program.program', 'manufactory', 'ComputerImages'])->find($id);
+        return $this->model::with(['product.product.product.category', 'program', 'manufactory', 'ComputerImages'])->find($id);
     }
 
 
@@ -30,4 +31,12 @@ class ComputerReedRepository implements ComputerReedRepositoryInterface
         return $this->model::where('alias', '=', $slug)->with(['product.product.product.category', 'program.program', 'manufactory', 'ComputerImages'])->first();
     }
 
+    public function getBYProgramId($id)
+    {
+     return $this->model::whereHas('program', function (Builder $query) use($id)
+        {
+            $query->where('program_id', '=', $id);
+        }
+    )->with(['product.product.product.category', 'program.program',  'ComputerImages'])->get();
+    }
 }
