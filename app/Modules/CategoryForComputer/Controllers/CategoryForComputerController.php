@@ -135,7 +135,7 @@ class CategoryForComputerController extends BaseApiController
         $model = $this->categoryForComputerRead->ByAlias($slug);
 
         foreach ($model as $key ) {
-          //  dd($key->category_id);
+         
         }
       $category =   DB::table('categories')
     ->where('categories.id',"{$key->category_id}")
