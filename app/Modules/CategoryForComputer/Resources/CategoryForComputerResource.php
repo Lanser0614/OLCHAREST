@@ -24,7 +24,7 @@ class CategoryForComputerResource extends JsonResource
             'category_ru' => $this->category->name_ru,
             'alias' => $this->category->alias,
             'image' => $this->icon,
-            'product' => ProductForComputer::collection($this->whenLoaded('products'))
+           // 'product' => ProductForComputer::collection($this->whenLoaded('products'))
         ];
     }
 }

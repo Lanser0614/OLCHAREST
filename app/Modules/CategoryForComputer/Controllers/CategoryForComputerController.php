@@ -133,23 +133,32 @@ class CategoryForComputerController extends BaseApiController
     public function ByAlias(string $slug, Request $request){
        
         $model = $this->categoryForComputerRead->ByAlias($slug);
-       //return new CategoryForComputerProductResource($model);
+
+        foreach ($model as $key ) {
+          //  dd($key->category_id);
+        }
+      $category =   DB::table('categories')
+    ->where('categories.id',"{$key->category_id}")
+    ->select('categories.id','categories.name_ru', 'categories.name_uz', 'categories.name_oz', 'categories.name_ru', 'categories.alias', 'categories.icon',)
+    ->get();
+    foreach ($category as $category_key ) {
+     // dd($key);
+    }
                   $perPage = 10;
                   $page = $request->input('page', 1);
                   $total = $model->count();
                   $path = $request->url();
                  $results = $model->skip(($page - 1) * $perPage)->take($perPage);
         
-        return ['Components' => $results,
-                 'Paginator' => 
-                  [
+                 return ['Components' => $results, 
+                         'Category' => $category_key,
+                 'Paginator' =>  [
                      'Total' => $total,
                      'Current page' => $page,
                      'PerPage' => $perPage,
                      'path'  => $path,
-                      'last_page' => ceil($total / $perPage)
-                     
-                     ]
+                     'last_page' => ceil($total / $perPage)
+                       ]
                     ];
     }
 
