@@ -32,9 +32,9 @@ class CategoryForComputerRepository implements CategoryForComputerRepositoryInte
   ->Join('products',function($join) use($value){
                       $join->on('products.id','=','product_for_computer.product_id')
                           ->where('product_for_computer.cat_id',"{$value->id}");
-                  })->select('products.name_uz','products.name_oz','products.name_ru','products.description_uz','products.description_oz','products.description_ru','products.alias','products.images','products.price','products.quantity','products.category_id', )
+                  })->select('products.id','products.name_uz','products.name_oz','products.name_ru','products.description_uz','products.description_oz','products.description_ru','products.alias','products.images','products.price','products.quantity','products.category_id', )
                   ->get();
-//var_dump($this->model);
+
                  return $this->model;
     }
 

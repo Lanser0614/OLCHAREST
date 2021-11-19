@@ -21,7 +21,7 @@ class OlchaCategoriesResource extends JsonResource
             'name_ru' => $this->name_ru,
             'name_oz' => $this->name_oz,
             'name_uz' => $this->name_uz,
-            //'name' => $this->name_uz,
+            'alias' => $this->alias,
             'product' => (ProductResource::collection($this->whenLoaded('products'))),
         ];
     }
