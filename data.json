@@ -1,0 +1,64 @@
+{
+    "id": 2,
+    "name_ru": "For job",
+    "name_uz": "Chyna Halvorson",
+    "name_oz": "Shana Dare",
+    "image": "Joany Jakubowski",
+    "parent_id": null,
+    "children": [
+      {
+        "id": 12,
+        "name_ru": "3D",
+        "name_uz": "3D",
+        "name_oz": "3D",
+        "image": null,
+        "parent_id": "2",
+        "children": [
+          {
+            "id": 15,
+            "name_ru": "AUTO CAD",
+            "name_uz": "AUTO CAD",
+            "name_oz": "AUTO CAD",
+            "image": null,
+            "parent_id": "12"
+          }
+        ]
+      },
+      {
+        "id": 13,
+        "name_ru": "VIDIO",
+        "name_uz": "VIDIO",
+        "name_oz": "VIDIO",
+        "image": null,
+        "parent_id": "2",
+        "children": [
+          {
+            "id": 16,
+            "name_ru": "ADOBE PREMIER PRO",
+            "name_uz": "ADOBE PREMIER PRO",
+            "name_oz": "ADOBE PREMIER PRO",
+            "image": null,
+            "parent_id": "13"
+          }
+        ]
+      },
+      {
+        "id": 14,
+        "name_ru": "FOTO",
+        "name_uz": "FOTO",
+        "name_oz": "FOTO",
+        "image": null,
+        "parent_id": "2",
+        "children": [
+          {
+            "id": 17,
+            "name_ru": "ADOBE PHOTOSHOP",
+            "name_uz": "ADOBE PHOTOSHOP",
+            "name_oz": "ADOBE PHOTOSHOP",
+            "image": null,
+            "parent_id": "14"
+          }
+        ]
+      }
+    ]
+  },

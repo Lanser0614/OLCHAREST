@@ -85,8 +85,9 @@ class ProgramController extends BaseApiController
         if (empty($model)){
             $this->responseWithMessage(Response::HTTP_NOT_FOUND);
         }
-        ///return $this->responseWithData(new ProgramResource($model));
-        return response()->json(['Program' => new ProgramResource($model)]);
+        //return $model;
+        //return $this->responseWithData(new ProgramResource($model));
+        return response()->json(['Program' =>  ProgramResource::collection($model)]);
       
     }
 
